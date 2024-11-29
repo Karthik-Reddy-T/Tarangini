@@ -46,6 +46,7 @@ async function getUserByEmail(email) {
     if (docSnapshot.exists()) {
       const user_data = docSnapshot.data();
       // console.log(user_data.Notification)
+      console.log(user_data)
       return user_data;
     } else {
       console.log("User not found.");
@@ -109,10 +110,10 @@ function Graph() {
         for (let i = 0; i < 12; i++) {
           month_H_demo[i] = user_data.Month_sp[i] - user_data.Month_G[i];
         }
-        let daily_H_demo = [];
-        for (let i = 0; i < 31; i++) {
-          daily_H_demo[i] = user_data.Daily_sp[i] - user_data.Daily_G[i];
-        }
+        // let daily_H_demo = [];
+        // for (let i = 0; i < 31; i++) {
+        //   daily_H_demo[i] = user_data.Daily_sp[i] - user_data.Daily_G[i];
+        // }
         // Set states
         setMonth_G(user_data.Month_G);
         setMonth_sp(user_data.Month_sp);
@@ -122,6 +123,7 @@ function Graph() {
         setDaily_H(daily_H_demo);
       })
       .catch(error => {
+        console.log("Error")
         console.log(error);
       });
   }, []); // Empty dependency array for running only once

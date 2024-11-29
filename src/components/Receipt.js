@@ -38,7 +38,7 @@ function Receipt() {
       ? JSON.parse(location.state.user)
       : null;
   const [user, setUser] = useState(userData);
-  const [month_consumed, setMonth] = useState(0);
+  const [month_consumed, setMonth] = useState(10);
   const [cgst, setCGST] = useState(0);
   const [sgst, setSGST] = useState(0);
   const [tp, setTP] = useState(0);
