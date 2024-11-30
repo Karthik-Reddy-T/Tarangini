@@ -119,8 +119,34 @@ function Graph() {
         setMonth_sp(user_data.Month_sp);
         setMonth_H(month_H_demo);
         setDaily_G(user_data.Daily_G);
-        setDaily_sp(user_data.Daily_sp);
-        setDaily_H(daily_H_demo);
+        setDaily_sp([9, 10, 9, 9, 6, 6, 10, 7, 10, 6, 9, 10, 5, 8, 6, 5, 8, 6, 9, 7, 8, 10, 5, 8, 8, 7, 8, 5, 5, 7]);
+        setDaily_H([6, 9, 5, 7, 5, 8, 8, 6, 5, 6, 5, 9, 5, 7, 5, 6, 5, 9, 7, 9, 8, 5, 6, 10, 8, 10, 10, 5, 6, 7]);
+      })
+      .catch(error => {
+        console.log("Error")
+        console.log(error);
+      });
+  }, []); // Empty dependency array for running only once
+
+
+  useEffect(() => {
+    getUserByEmail(userData.email)
+      .then(user_data => {
+        // Perform calculations
+        let month_G_demo = [];
+        for (let i = 0; i < 12; i++) {
+          month_G_demo[i] = user_data.Month_sp[i] - user_data.Month_H[i];
+        }
+        console.log(month_G_demo)
+        setMonth_G(month_G_demo)
+
+
+        let daily_G_demo = [];
+        for (let i = 0; i < 30; i++) {
+          daily_G_demo[i] = daily_sp[i] - daily_H[i];
+        }
+        console.log(daily_G_demo)
+        setDaily_G(daily_G_demo)
       })
       .catch(error => {
         console.log("Error")
